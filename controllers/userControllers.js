@@ -53,6 +53,7 @@ const loginUser = async(req, res) => {
     if(await user.checkPassword(password)){
 
         res.json({
+            imgProfile: {},
             name: user.name,
             email: user.email,
             token: createJWT(user._id)
@@ -68,6 +69,14 @@ const loginUser = async(req, res) => {
 }
 
 
+const profileUser = (req, res) => {
+
+    const { users } = req
+
+
+    res.json(users)
+}
+
 
 
 
@@ -80,4 +89,5 @@ const loginUser = async(req, res) => {
 export {
     registerSignUp,
     loginUser,
+    profileUser
 }
